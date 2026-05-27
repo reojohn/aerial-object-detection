@@ -10,6 +10,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from ultralytics import YOLO
 
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from fastapi import Request
+
 BASE_DIR = Path(__file__).resolve().parents[1]
 BACKEND_DIR = BASE_DIR / "backend"
 UPLOAD_DIR = BACKEND_DIR / "uploads"
@@ -41,6 +45,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.mount("/outputs", StaticFiles(directory=str(OUTPUT_DIR)), name="outputs")
+
+app.mount("/", StaticFiles(directory=str(BASE_DIR / "dist"), html=True), name="frontend")
 
 MODEL: Optional[YOLO] = None
 
@@ -150,7 +156,7 @@ async def detect(file: UploadFile = File(...), confidence: float = Form(0.25)):
     return {
         "success": True,
         "summary": summarize(results),
-        "output_url": f"http://127.0.0.1:8000/outputs/{relative_output}",
+        "output_url": f"/outputs/{relative_output}",
         "output_path": str(output_file),
         "confidence": confidence,
         "classes": TARGET_CLASSES,
@@ -158,4 +164,4 @@ async def detect(file: UploadFile = File(...), confidence: float = Form(0.25)):
     }
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=False, app_dir=str(BACKEND_DIR))
+    uvicorn.run("app:app", host="0.0.0.0", port=10000)
