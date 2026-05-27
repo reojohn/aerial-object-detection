@@ -1,0 +1,43 @@
+Aerial Threat Detection 4-Class App
+
+This version keeps the uploaded app design and adds the required Python YOLOv8 backend.
+
+1. Model file
+   Make sure the trained 4-class YOLOv8 model is here:
+
+   model/best.pt
+
+   If needed, download best_4class.pt from Google Drive, put it in model/, and rename it to best.pt.
+
+2. Install frontend dependencies
+   Open CMD in this folder and run:
+
+   npm install
+
+3. Install backend dependencies
+   In the same folder, run:
+
+   pip install -r backend/requirements.txt
+
+4. Run backend first
+   Open CMD in this folder and run:
+
+   python backend/app.py
+
+   Keep this terminal open. It should run at http://127.0.0.1:8000
+
+5. Run frontend
+   Open another CMD in this folder and run:
+
+   npm run dev
+
+   Open the Vite link, usually http://127.0.0.1:5173
+
+6. Test
+   Upload an image or video, set the confidence threshold, then click Run Detection Analysis.
+
+Supported classes:
+- human
+- soldier
+- drone
+- quadcopter

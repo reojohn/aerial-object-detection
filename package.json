@@ -1,0 +1,23 @@
+{
+  "name": "aerial-threat-browser-react-tailwind",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser React + Tailwind prototype for aerial object detection UI with Python YOLOv8 backend.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --open",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --open",
+    "backend": "python backend/app.py"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.10",
+    "postcss": "^8.4.41",
+    "autoprefixer": "^10.4.20"
+  },
+  "devDependencies": {}
+}
