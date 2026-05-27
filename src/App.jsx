@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 
 const supportedTypes = ["jpg", "jpeg", "png", "mp4", "avi", "mov", "mkv"];
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://aerial-object-detection.onrender.com";
 
 const emptySummary = {
   human: 0,
