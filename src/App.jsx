@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 
 const supportedTypes = ["jpg", "jpeg", "png", "mp4", "avi", "mov", "mkv"];
-const API_URL = "https://aerial-object-detection.onrender.com";
+
 
 const emptySummary = {
   human: 0,
@@ -761,7 +761,7 @@ export default function App() {
     formData.append("confidence", String(confidence));
 
     try {
-      const response = await fetch(`${API_URL}/detect`, {
+      const response = await fetch("/detect", {
         method: "POST",
         body: formData
       });
